@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -51,45 +52,42 @@ button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 <h1>انضم لفريق Built In</h1>
 <p>بيانات بسيطة وهنتواصل معاك.</p>
 </header>
-
+ 
 <form id="form" novalidate>
 <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+ 
 <div class="f"><label for="name">الاسم <i>*</i></label><input id="name" name="name" required><div class="err"></div></div>
-
-<div class="row">
-<div class="f"><label for="phone">رقم الواتساب <i>*</i></label><input id="phone" name="phone" class="ltr" inputmode="tel" placeholder="01XXXXXXXXX" required><div class="err"></div></div>
+ 
 <div class="f"><label for="email">الإيميل <i>*</i></label><input id="email" name="email" type="email" class="ltr" required><div class="err"></div></div>
-</div>
-
+ 
 <div class="row">
 <div class="f"><label for="exp">سنوات الخبرة <i>*</i></label>
 <select id="exp" name="experience" required><option value="">اختر</option><option>بدون خبرة</option><option>أقل من سنة</option><option>١ - ٣ سنوات</option><option>٣ - ٥ سنوات</option><option>أكتر من ٥ سنوات</option></select><div class="err"></div></div>
 <div class="f"><label for="salary">المرتب المتوقع <i>*</i></label><input id="salary" name="salary" inputmode="numeric" placeholder="بالجنيه" required><div class="err"></div></div>
 </div>
-
+ 
 <div class="f"><label for="start">تقدر تبدأ امتى؟ <i>*</i></label><input id="start" name="start_date" placeholder="فوراً / بعد أسبوعين" required><div class="err"></div></div>
-
+ 
 <div class="f">
 <span class="lbl">أنسب مواعيد نكلمك فيها <i>*</i> <span class="hint">(من ١٠ ص لـ ٦ م، خلال ٣ أيام)</span></span>
 <div id="days"></div>
 <div class="err" id="slotErr"></div>
 </div>
-
+ 
 <button id="btn" type="submit">إرسال</button>
 <div class="msg" id="msg" role="alert"></div>
 </form>
-
+ 
 <div id="done" role="status">
 <h2>وصلنا طلبك</h2>
 <p>شكراً على وقتك. هنتواصل معاك في المواعيد اللي اخترتها.</p>
 </div>
 </div>
-
+ 
 <script>
 // الصق هنا رابط الـ Web App من Google Apps Script
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyCRmcG-GehkZPutmLko8z2LKBwNfkecqMa3ANfjNVg1PzJwM2STkrWovm3dpX3-g_Fw/exec";
-
+ 
 const SLOTS = ['١٠ - ١٢','١٢ - ٢','٢ - ٤','٤ - ٦'];
 const daysEl = document.getElementById('days');
 for (let i = 1; i <= 3; i++) {
@@ -100,9 +98,9 @@ for (let i = 1; i <= 3; i++) {
     '<label><input type="checkbox" data-day="' + label + '" value="' + s + '"><span>' + s + '</span></label>').join('') + '</div>';
   daysEl.appendChild(box);
 }
-
+ 
 const form = document.getElementById('form'), btn = document.getElementById('btn'), msg = document.getElementById('msg');
-
+ 
 form.addEventListener('submit', async e => {
   e.preventDefault(); msg.textContent = '';
   let ok = true;
@@ -120,7 +118,7 @@ form.addEventListener('submit', async e => {
   if (!ok) return;
   if (form.website.value) return;
   if (ENDPOINT.startsWith('PASTE')) { msg.textContent = 'لسه ما اتحطش رابط الشيت في الكود.'; return; }
-
+ 
   btn.disabled = true; btn.textContent = 'جاري الإرسال...';
   try {
     const data = new URLSearchParams(new FormData(form));
@@ -138,3 +136,4 @@ form.addEventListener('submit', async e => {
 </script>
 </body>
 </html>
+ 
